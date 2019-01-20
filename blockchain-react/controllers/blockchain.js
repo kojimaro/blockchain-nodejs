@@ -1,4 +1,4 @@
-const BlockHeader = require('./block-header');
+const BlockHeader = require('../models/block-header');
 const { calculateHash, isValidHash } = require('./hash');
 
 let blockchain = [];

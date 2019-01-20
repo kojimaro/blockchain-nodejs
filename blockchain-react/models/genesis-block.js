@@ -1,4 +1,4 @@
-const { calculateHash } = require('./hash');
+const { calculateHash } = require('../controllers/hash');
 
 class GenesisBlock {
     constructor(timestamp) {
