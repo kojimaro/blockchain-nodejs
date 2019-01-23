@@ -12,11 +12,35 @@ const styles = theme => ({
 
 class FormContainer extends Component {
     state = {
-        message: ""
+        messages: [{value:""}],
+    }
+
+    addInput = (event) => {
+        event.preventDefault();
+        this.setState({messages: this.state.messages.concat({value:""})})
+    }
+
+    createInput = index => {
+        return (
+            <div key={index}>
+                <Input
+                    type="text"
+                    label={"message-"+index}
+                    id={index.toString()}
+                    value={this.state.messages[index].value}
+                    handleChange={this.handleChange}
+                    variant="filled"
+                />
+            </div>
+        );
     }
 
     handleChange = event => {
-        this.setState({ [event.target.id]: event.target.value })
+        let index = Number(event.target.id);
+        let messages = [...this.state.messages];
+        messages[index].value = event.target.value;
+
+        this.setState({messages}, ()=>console.log(this.state.messages));
     }
 
     handleSubmit = event => {
@@ -32,19 +56,12 @@ class FormContainer extends Component {
 
     return (
       <form className={classes.container}>
-        <Input
-            type="text"
-            label="message"
-            id="message"
-            value={this.state.message}
-            handleChange={this.handleChange}
-            variant="filled"
-        />
+        {this.state.messages.map((obj, index)=>this.createInput(index))}
         <Submit
             variant="contained"
             color="primary"
             label="send"
-            handleClick={this.handleSubmit}
+            handleClick={this.addInput}
         />
       </form>
     );

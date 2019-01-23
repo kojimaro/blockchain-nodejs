@@ -13,7 +13,6 @@ const Input = ({label, type, id, value, handleChange, variant}) => {
                 value={value}
                 onChange={handleChange}
                 variant={variant}
-                required
             />
         </div>
     );
