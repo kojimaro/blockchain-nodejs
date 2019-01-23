@@ -40,7 +40,7 @@ class FormContainer extends Component {
         let messages = [...this.state.messages];
         messages[index].value = event.target.value;
 
-        this.setState({messages}, ()=>console.log(this.state.messages));
+        this.setState({messages});
     }
 
     handleSubmit = event => {
