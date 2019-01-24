@@ -4,17 +4,16 @@ import TextField from '@material-ui/core/TextField';
 
 const Input = ({label, type, id, value, handleChange, variant}) => {
     return(
-        <div className="form-group">
-            <TextField
-                type={type}
-                label={label}
-                className="form-control"
-                id={id}
-                value={value}
-                onChange={handleChange}
-                variant={variant}
-            />
-        </div>
+        <TextField
+            type={type}
+            label={label}
+            className="form-control"
+            id={id}
+            value={value}
+            onChange={handleChange}
+            variant={variant}
+            fullWidth={true}
+        />
     );
 }
 

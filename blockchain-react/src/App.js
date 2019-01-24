@@ -61,11 +61,13 @@ class App extends Component {
                     {JSON.stringify(this.state.blocks)}
                 </Grid>
                 <Grid className={classes.height100}>
-                    <Paper 
-                        className={classes.bottomArea}
-                        elevation={4}>
-                        <FormContainer postMessage={this.postMessage}/>
-                    </Paper>
+                    <Grid item xs={4} className={classes.height100}>
+                        <Paper 
+                            className={classes.bottomArea}
+                            elevation={4}>
+                            <FormContainer postMessage={this.postMessage}/>
+                        </Paper>
+                    </Grid>
                 </Grid>
             </Grid>
         );

@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { withStyles } from '@material-ui/core/styles';
 import Input from "../presentational/Input";
-import Submit from "../presentational/Submit";
+import FormHeader from "../presentational/FormHeader";
 
 const styles = theme => ({
     container: {
-        display: 'flex',
-        flexWrap: 'wrap'
-    }
+        marginTop: theme.spacing.unit * 2,
+    },
+    textField: {
+        width: '100%',
+        marginBottom: theme.spacing.unit * 2,
+    },
 });
 
 class FormContainer extends Component {
@@ -21,8 +24,9 @@ class FormContainer extends Component {
     }
 
     createInput = index => {
+        const { classes } = this.props;
         return (
-            <div key={index}>
+            <div className={classes.textField} key={index}>
                 <Input
                     type="text"
                     label={"message-"+index}
@@ -55,15 +59,12 @@ class FormContainer extends Component {
     const { classes } = this.props;
 
     return (
-      <form className={classes.container}>
-        {this.state.messages.map((obj, index)=>this.createInput(index))}
-        <Submit
-            variant="contained"
-            color="primary"
-            label="send"
-            handleClick={this.addInput}
-        />
-      </form>
+        <div>
+            <FormHeader addInput={this.addInput}/>
+            <form className={classes.container}>
+                {this.state.messages.map((obj, index)=>this.createInput(index))}
+            </form>
+        </div>
     );
   }
 }
