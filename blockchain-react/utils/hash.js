@@ -22,7 +22,10 @@ const isValidHash = (block, proofHash) => {
     return proofHash === hash ? true : false;
 }
 
+const sha256 = data => createHash('sha256').update(data).digest()
+
 module.exports = { 
     calculateHash,
-    isValidHash
+    isValidHash,
+    sha256
 }

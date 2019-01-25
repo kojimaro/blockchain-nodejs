@@ -5,22 +5,21 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
+var blockRouter = require('./routes/block');
 var mineRouter = require('./routes/mine');
 
 const GenesisBlock = require('./models/genesis-block');
-const { blockchain } = require('./controllers/blockchain');
+const { blockchain } = require('./controllers/BlockController');
 
 var app = express();
 
 app.use(logger('dev'));
-//app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/blocks', indexRouter);
+app.use('/blocks', blockRouter);
 app.use('/mine', mineRouter);
 
 // catch 404 and forward to error handler

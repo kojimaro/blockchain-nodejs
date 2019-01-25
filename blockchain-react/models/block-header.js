@@ -1,9 +1,9 @@
 class BlockHeader {
-    constructor(index, previousHash, timestamp, message, hash) {
+    constructor(index, previousHash, timestamp, merkleRoot, hash) {
         this.index = index;
         this.previousHash = previousHash;
         this.timestamp = timestamp.toString();
-        this.message = message;
+        this.merkleRoot = merkleRoot;
         this.hash = hash;
     }
 }

@@ -1,9 +1,9 @@
 const BlockHeader = require('../models/block-header');
-const { calculateHash, isValidHash } = require('./hash');
+const { calculateHash, isValidHash } = require('../utils/hash');
 
 let blockchain = [];
 
-const generateBlock = message => {
+const generateBlock = merkleRoot => {
     const previousBlock = getLatestBlock();
     const index = previousBlock.index + 1;
     const previousHash = previousBlock.hash;
@@ -13,21 +13,21 @@ const generateBlock = message => {
         index,
         previousHash,
         timestamp,
-        message
+        merkleRoot
     );
     
     return new BlockHeader(
         index,
         previousHash,
         timestamp,
-        message,
+        merkleRoot,
         hash
     );
 }
 
 const addBlock = newBlock => {
-    if(!isValidBlock(newBlock, getLatestBlock())) return;
-    blockchain.push(newBlock);
+    if(!isValidBlock(newBlock, getLatestBlock())) return
+    blockchain.push(newBlock)
 }
 
 const getLatestBlock = () => {
