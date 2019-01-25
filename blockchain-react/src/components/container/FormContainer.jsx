@@ -40,6 +40,8 @@ class FormContainer extends Component {
     }
 
     handleChange = event => {
+        if(event.target.value.match(/[\s\t]/)) return;
+
         let index = Number(event.target.id);
         let messages = [...this.state.messages];
         messages[index].value = event.target.value;
@@ -49,10 +51,9 @@ class FormContainer extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        if(!this.state.message.length > 0) return;
-        if(this.state.message.match(/[\s\t]/)) return;
-
-        this.props.postMessage();
+        let messages = this.state.messages;
+        const data = messages.map(message => message.value)
+        this.props.postMessage(data);
     }
 
   render() {
@@ -60,7 +61,10 @@ class FormContainer extends Component {
 
     return (
         <div>
-            <FormHeader addInput={this.addInput}/>
+            <FormHeader 
+                addInput={this.addInput} 
+                handleSubmit={this.handleSubmit}
+            />
             <form className={classes.container}>
                 {this.state.messages.map((obj, index)=>this.createInput(index))}
             </form>

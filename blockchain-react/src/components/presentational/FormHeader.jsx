@@ -13,7 +13,7 @@ const styles = theme => ({
 })
 
 const FormHeader = props => {
-    const { classes, addInput } = props;
+    const { classes, addInput, handleSubmit } = props;
 
     return(
         <div className={classes.container}>
@@ -28,7 +28,7 @@ const FormHeader = props => {
                     variant="contained"
                     color="primary"
                     label="send"
-                    handleClick={addInput}
+                    handleClick={handleSubmit}
                 />
             </div>
         </div>

@@ -38,8 +38,8 @@ class App extends Component {
         console.log(this.state.blocks);
     }
 
-    postMessage = async() => {
-        const data = {'message': this.state.message};
+    postMessage = async (messages) => {
+        const data = {'messages': messages};
         let response = await fetch('/mine', {
             method: "POST",
             headers: {
@@ -50,7 +50,6 @@ class App extends Component {
 
         let result = await response.json();
         this.setState({blocks: this.state.blocks.concat([result])});
-        console.log(result);
     }
 
     render() {
