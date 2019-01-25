@@ -2,7 +2,7 @@ const { generateBlock, addBlock } = require('./BlockController')
 const { sha256 } = require('../utils/hash')
 const merkle = require('merkle-lib')
 
-const _convertBuffer = datas => datas.map(data => Buffer.from(data, 'hex'))
+const _convertBuffer = datas => datas.map(data => Buffer.from(data))
 
 const _calculateMerkelTree = buffer => merkle(buffer, sha256)
 
